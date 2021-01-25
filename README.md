@@ -1,7 +1,8 @@
 # student-card
-
+```
 ## Tech 
- ~ bootstrap
- ~ jquery 
- ~ croppie
- ~ fpdf
+ - bootstrap
+ - jquery 
+ - croppie
+ - fpdf
+ ```
