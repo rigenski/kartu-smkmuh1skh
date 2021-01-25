@@ -1,7 +1,8 @@
-# student-card
+# Student Card
+web to print student cards
 
-Tech 
- - bootstrap
- - jquery 
- - croppie
- - fpdf
+### Tech used
+- Bootstrap
+- Jquery
+- Croppie
+- Fpdf
