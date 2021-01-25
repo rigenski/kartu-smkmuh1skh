@@ -1,0 +1,44 @@
+@font-face {
+  font-family: roboto;
+  src: url(../font/Roboto-Medium.ttf);
+}
+
+* {
+  font-family: roboto;
+  color: #7c8ca5;
+}
+
+.wrapper {
+  background: #2d3748;
+}
+
+table {
+  height: 200.31496063px;
+  width: 680.31496063px;
+}
+
+td {
+  width: 340.15748031px;
+}
+
+#img-card {
+  width: 80px;
+  height: 105px;
+}
+
+#text-card {
+  width: 145px;
+}
+
+p {
+  font-size: 10px;
+  margin: 0;
+}
+
+#date {
+  font-size: 8px;
+}
+
+#informasi {
+  background-color: #c1c1c1;
+}
