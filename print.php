@@ -25,7 +25,7 @@ $data = read("SELECT * FROM siswas WHERE id = $id")[0];
 
 $pdf = new FPDF('P', 'cm', 'A4');
 $pdf->AddPage();
-$pdf->Image('./img/card.png', 1.4, 1.4, 18);
+$pdf->Image('./img/card-03.png', 1.4, 1.4, 18);
 // FRONT PAGE
 $pdf->Image('./img/logo-smk.png', 1.8, 1.6, 0.8);
 $pdf->Image('./img/logo-dikdasmen.png', 8.72, 1.54, 1.6);

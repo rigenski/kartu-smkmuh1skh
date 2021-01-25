@@ -1,6 +1,10 @@
 <?php
 session_start();
 include 'functions/connection.php';
+
+if (isset($_SESSION["login"])) {
+  header("Location: home.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +79,7 @@ include 'functions/connection.php';
                     if (mysqli_num_rows($result) === 1) {
                       // cek password
                       $row = mysqli_fetch_assoc($result);
-                      if ($password == $row['password']) {
+                      if ($password == $row['tanggal_lahir']) {
 
                         // set session
                         $_SESSION["login"] = true;
@@ -84,12 +88,12 @@ include 'functions/connection.php';
                         if ($row['nama'] == null) {
                           header("Location: form.php");
                         } else {
-                          header("Location: index.php");
+                          header("Location: home.php");
                         }
                       }
-                    } else {
-                      echo "<div></div><div class = 'alert alert-danger'role = 'alert' >NIS atau Password Salah </div></div>";
-                    };
+                    }
+
+                    echo "<div></div><div class = 'alert alert-danger'role = 'alert' >NIS atau Password Salah </div></div>";
                   }
                   ?>
                 </form>

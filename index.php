@@ -2,16 +2,12 @@
 
 session_start();
 
-if (!isset($_SESSION["login"])) {
-    header("Location: login.php");
+if (isset($_SESSION["login"])) {
+    header("Location: home.php");
 }
 
-
-include 'functions/function.php';
-
-$id = $_SESSION['key'];
-$data = read("SELECT * FROM siswas WHERE id = $id")[0];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,9 +32,9 @@ $data = read("SELECT * FROM siswas WHERE id = $id")[0];
         background-color: #2D3748;
     }
 
-    #informasi {
+    .step {
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05);
-        border-radius: .8rem;
+        border-radius: 1rem;
     }
 </style>
 
@@ -50,13 +46,13 @@ $data = read("SELECT * FROM siswas WHERE id = $id")[0];
             </a>
             <div>
                 <div class="ml-auto">
-                    <a href="logout.php">
-                        <button type="button" class="btn btn-danger">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="currentColor" class="bi bi-box-arrow-right " viewBox="0 0 16 16" style="margin-bottom: 3px;">
-                                <path fill-rule="evenodd" class="text-white" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"></path>
-                                <path fill-rule="evenodd" class="text-white" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"></path>
+                    <a href="login.php">
+                        <button type="button" class="btn btn-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16" style="margin-bottom: 3px;">
+                                <path class="text-white" fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+                                <path class="text-white" fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
                             </svg>
-                            <span class="visually-hidden text-white">Keluar</span>
+                            <span class="visually-hidden text-white">Masuk</span>
                         </button>
                     </a>
                 </div>
@@ -66,59 +62,43 @@ $data = read("SELECT * FROM siswas WHERE id = $id")[0];
 
     <div id="content">
         <div class="container my-4">
-            <div class="row">
-                <div class="col-md-8  mb-4">
-                    <div id="informasi" class="p-4 bg-white">
-                        <h3 class="font-weight-bold mb-2 ml-2">Informasi</h3>
-                        <table style="width: 100%;" cellspacing="0" cellpadding="10">
-                            <tr>
-                                <td>NIS</td>
-                                <td class="font-weight-bold"><?= $data['nis'] ?></td>
-                            </tr>
-                            <tr>
-                                <td class="field">Nama</td>
-                                <td class="font-weight-bold"><?= $data['nama'] ?></td>
-                            </tr>
-                            <tr>
-                                <td class="field">Jenis Kelamin</td>
-                                </td>
-                                <td class="font-weight-bold"><?= $data['jenis_kelamin'] ?></td>
-                            </tr>
-                            <tr>
-                                <td class="field">Tempat, Tanggal Lahir </td>
-                                <td class="font-weight-bold"><?= $data['tempat_lahir'] . ',' . $data['tanggal_lahir'] ?></td>
-                            </tr>
-                            <tr>
-                                <td class="field">Alamat</td>
-                                <td class="font-weight-bold"><?= $data['alamat'] ?></td>
-                            </tr>
-                            <tr>
-                                <td class="field">Foto</td>
-                                <td><img src="img/<?= $data['foto'] ?>" alt="" height="200px" class="rounded"></td>
-                            </tr>
-
-                        </table>
+            <div class="row py-4">
+                <div class="col-md-6 order-md-2 my-3">
+                    <img src="img/illust1.svg" class="img-fluid p-4" alt="">
+                </div>
+                <div class="col-md-6 d-flex justify-content-center align-items-center pr-5 my-3">
+                    <div>
+                        <h1>KARTU PELAJAR</h1>
+                        <h5 class="">Isi data dirimu dan Cetak sekarang juga !</h5>
+                        <a href="login.php">
+                            <button type="submit" class="btn btn-primary col-6 my-4  rounded-pill py-2 font-weight-bold" name="login">
+                                Masuk
+                            </button>
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <a href="form.php" class="col-12 my-2">
-                            <button type="button" class="btn btn-primary col-12 font-weight-bold py-2">
-                                Ubah Kartu
-                            </button>
-                        </a>
-                        <a href="print.php" class="col-12  my-2">
-                            <button type="button" class="btn btn-success col-12 font-weight-bold py-2">
-                                Cetak Kartu
-                            </button>
-                        </a>
-                    </div>
+            </div>
+            <div class="col-12 text-center mt-4">
+                <h1>TUTORIAL</h1>
+            </div>
+            <div class="row py-4">
+                <div class="col-xl-3 text-center">
+                    <img src="img/step1.png" class="img-fluid my-2 step" alt="">
+                </div>
+                <div class="col-xl-3 text-center">
+                    <img src="img/step2.png" class="img-fluid my-2 step" alt="">
+                </div>
+                <div class="col-xl-3 text-center">
+                    <img src="img/step3.png" class="img-fluid my-2 step" alt="">
+                </div>
+                <div class="col-xl-3 text-center">
+                    <img src="img/step4.png" class="img-fluid my-2 step" alt="">
                 </div>
             </div>
         </div>
     </div>
 
 
-</body>
 
-</html>
+</body>
+<html>

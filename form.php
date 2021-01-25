@@ -13,10 +13,10 @@ $data = read("SELECT * FROM siswas WHERE id = $id")[0];
 if (isset($_POST['cetak'])) {
   if (updateCard($_POST) > 0) {
     echo "<script>alert('Berhasil Menyimpan');
-    document.location.href = 'index.php';</script>";
+    document.location.href = 'home.php';</script>";
   } else {
     echo "<script>alert('Berhasil Menyimpan');
-    document.location.href = 'index.php';</script>";
+    document.location.href = 'home.php';</script>";
   }
 }
 ?>
@@ -124,9 +124,9 @@ if (isset($_POST['cetak'])) {
             </div>
             <div class="form-group col-md-4">
               <label for="tanggal-lahir">Tanggal Lahir</label>
-              <input type="text" class="form-control datepicker" id="tanggal-lahir" name="tanggal-lahir" value="<?php if ($data['tanggal_lahir'] !== null) {
-                                                                                                                  echo $data['tanggal_lahir'];
-                                                                                                                } ?>" />
+              <input type="text" class="form-control datepicker" id="tanggal-lahir" disabled name="tanggal-lahir" value="<?php if ($data['tanggal_lahir'] !== null) {
+                                                                                                                            echo $data['tanggal_lahir'];
+                                                                                                                          } ?>" />
               <small>contoh : 15 05 2004</small>
             </div>
           </div>
