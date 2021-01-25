@@ -1,6 +1,6 @@
 # student-card
 
-## Tech 
+Tech 
  - bootstrap
  - jquery 
  - croppie
