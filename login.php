@@ -72,8 +72,7 @@ if (isset($_SESSION["login"])) {
                     $password = $_POST["password"];
                     $err_login = "<div class = 'alert alert-success'role = 'alert' >Masukkan NIS dan password dengan Benar </div>";
 
-
-                    $result = mysqli_query($conn, "SELECT * FROM siswas WHERE nis = '$nis'");
+                    $result = mysqli_query($conn, "SELECT * FROM student WHERE nis = '$nis'");
 
                     //cek nis
                     if (mysqli_num_rows($result) === 1) {
@@ -85,7 +84,7 @@ if (isset($_SESSION["login"])) {
                         $_SESSION["login"] = true;
                         $_SESSION["key"] = $row['id'];
 
-                        if ($row['nama'] == null) {
+                        if ($row['foto'] == null) {
                           header("Location: form.php");
                         } else {
                           header("Location: home.php");

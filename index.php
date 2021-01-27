@@ -19,9 +19,14 @@ if (isset($_SESSION["login"])) {
 </head>
 
 <style>
+    @font-face {
+        font-family: "Montserrat";
+        src: url("fonts/Montserrat-Regular.ttf")
+    }
+
     * {
         color: #2D3748;
-        font-family: "Segoe UI";
+        font-family: "Montserrat";
     }
 
     body {
@@ -52,7 +57,7 @@ if (isset($_SESSION["login"])) {
                                 <path class="text-white" fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
                                 <path class="text-white" fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
                             </svg>
-                            <span class="visually-hidden text-white">Masuk</span>
+                            <span class="visually-hidden text-white" style="font-family: Segoe UI;">Masuk</span>
                         </button>
                     </a>
                 </div>
@@ -68,10 +73,10 @@ if (isset($_SESSION["login"])) {
                 </div>
                 <div class="col-md-6 d-flex justify-content-center align-items-center pr-5 my-3">
                     <div>
-                        <h1>KARTU PELAJAR</h1>
+                        <h1 class="font-weight-bold">KARTU PELAJAR</h1>
                         <h5 class="">Isi data dirimu dan Cetak sekarang juga !</h5>
                         <a href="login.php">
-                            <button type="submit" class="btn btn-primary col-6 my-4  rounded-pill py-2 font-weight-bold" name="login">
+                            <button type="submit" class="btn btn-primary col-6 my-4  rounded-pill py-2 font-weight-bold shadow" name="login">
                                 Masuk
                             </button>
                         </a>
@@ -79,19 +84,19 @@ if (isset($_SESSION["login"])) {
                 </div>
             </div>
             <div class="col-12 text-center mt-4">
-                <h1>TUTORIAL</h1>
+                <h1 class="font-weight-bold">TUTORIAL</h1>
             </div>
             <div class="row py-4">
-                <div class="col-xl-3 text-center">
+                <div class="col-12 col-md-6 col-lg-3 text-center">
                     <img src="img/step1.png" class="img-fluid my-2 step" alt="">
                 </div>
-                <div class="col-xl-3 text-center">
+                <div class="col-12 col-md-6 col-lg-3 text-center">
                     <img src="img/step2.png" class="img-fluid my-2 step" alt="">
                 </div>
-                <div class="col-xl-3 text-center">
+                <div class="col-12 col-md-6 col-lg-3 text-center">
                     <img src="img/step3.png" class="img-fluid my-2 step" alt="">
                 </div>
-                <div class="col-xl-3 text-center">
+                <div class="col-12 col-md-6 col-lg-3 text-center">
                     <img src="img/step4.png" class="img-fluid my-2 step" alt="">
                 </div>
             </div>

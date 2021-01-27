@@ -8,7 +8,7 @@ if (!isset($_SESSION["login"])) {
 include 'functions/function.php';
 
 $id = $_SESSION['key'];
-$data = read("SELECT * FROM siswas WHERE id = $id")[0];
+$data = read("SELECT * FROM student WHERE id = $id")[0];
 
 if (isset($_POST['cetak'])) {
   if (updateCard($_POST) > 0) {
@@ -58,9 +58,11 @@ if (isset($_POST['cetak'])) {
 </head>
 
 <body>
-  <nav id="nav" class="navbar navbar-expand-lg navbar-light py-3 shadow">
+  <nav id="nav" class="navbar navbar-expand-lg navbar-light py-2 shadow">
     <div class="container">
-      <a class="navbar-brand text-white font-weight-bold " href="index.php">Kartu Pelajar</a>
+      <a class="navbar-brand text-white font-weight-bold " href="home.php">
+        <img src="img/logo-white.svg" alt="" width="100px">
+      </a>
       <div>
         <div class="ml-auto">
           <a href="logout.php">
@@ -92,23 +94,23 @@ if (isset($_POST['cetak'])) {
             <div class="form-group col-md-8">
               <label for="nama">Nama Lengkap</label>
               <input type="text" class="form-control" id="nama" name="nama" value="<?php if ($data['nama'] !== null) {
-                                                                                      echo $data['nama'];
+                                                                                      echo ucwords(strtolower($data['nama']));
                                                                                     } ?>" />
             </div>
             <div class="form-group col-md-4">
               <label for="jenis-kelamin">Jenis Kelamin</label>
               <select class="custom-select" id="jenis-kelamin" name="jenis-kelamin" required>
                 <?php
-                if ($data['jenis_kelamin'] == "Laki-Laki") {
-                  echo "<option selected value='Laki-Laki'>Laki-Laki</option>
-                  <option value='Perempuan'>Perempuan</option>";
-                } else if ($data['jenis_kelamin'] == "Perempuan") {
-                  echo "<option selected value='Perempuan'>Perempuan</option>
-                  <option value='Laki-Laki'>Laki-Laki</option>";
+                if ($data['jenis_kelamin'] == "L") {
+                  echo "<option selected value='L'>Laki - Laki</option>
+                  <option value='P'>Perempuan</option>";
+                } else if ($data['jenis_kelamin'] == "P") {
+                  echo "<option selected value='P'>Perempuan</option>
+                  <option value='L'>Laki - Laki</option>";
                 } else {
                   echo "<option selected value=''>-- Pilih --</option>
-                  <option value='Laki-Laki'>Laki-Laki</option>
-                  <option value='Perempuan'>Perempuan</option>";
+                  <option value='L'>Laki - Laki</option>
+                  <option value='P'>Perempuan</option>";
                 }
                 ?>
               </select>
@@ -118,22 +120,22 @@ if (isset($_POST['cetak'])) {
             <div class="form-group col-md-8">
               <label for="tempat-lahir">Tempat Lahir</label>
               <input type="text" class="form-control" id="tempat-lahir" name="tempat-lahir" value="<?php if ($data['tempat_lahir'] !== null) {
-                                                                                                      echo $data['tempat_lahir'];
+                                                                                                      echo ucwords(strtolower($data['tempat_lahir']));
                                                                                                     } ?>" />
               <small>contoh : Sukoharjo</small>
             </div>
             <div class="form-group col-md-4">
               <label for="tanggal-lahir">Tanggal Lahir</label>
               <input type="text" class="form-control datepicker" id="tanggal-lahir" disabled name="tanggal-lahir" value="<?php if ($data['tanggal_lahir'] !== null) {
-                                                                                                                            echo $data['tanggal_lahir'];
+                                                                                                                            echo ucwords(strtolower($data['tanggal_lahir']));
                                                                                                                           } ?>" />
-              <small>contoh : 15 05 2004</small>
+              <!-- <small>contoh : 15/05/2004</small> -->
             </div>
           </div>
           <div class="form-group">
             <label for="alamat">Alamat</label>
             <input type="text" class="form-control" id="alamat" name="alamat" value="<?php if ($data['alamat'] !== null) {
-                                                                                        echo $data['alamat'];
+                                                                                        echo ucwords(strtolower($data['alamat']));
                                                                                       } ?>" />
             <small>contoh : -</small>
           </div>
@@ -143,7 +145,7 @@ if (isset($_POST['cetak'])) {
               <div class="custom-file">
                 <input type="file" class="custom-file-input" accept="image/x-png,image/jpg,image/jpeg" id="foto" name="foto" />
                 <label class="custom-file-label" for="foto">-- Pilih Foto --</label>
-                <small>max. 2 MB</small>
+                <small>max. 6 MB</small>
               </div>
             </div>
             <div class="col-md-4 text-center" id="uploaded_image">

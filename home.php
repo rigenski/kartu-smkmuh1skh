@@ -10,7 +10,8 @@ if (!isset($_SESSION["login"])) {
 include 'functions/function.php';
 
 $id = $_SESSION['key'];
-$data = read("SELECT * FROM siswas WHERE id = $id")[0];
+$data = read("SELECT * FROM student WHERE id = $id")[0];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,24 +78,44 @@ $data = read("SELECT * FROM siswas WHERE id = $id")[0];
                             </tr>
                             <tr>
                                 <td class="field">Nama</td>
-                                <td class="font-weight-bold"><?= $data['nama'] ?></td>
+                                <td class="font-weight-bold"><?= ucwords(strtolower($data['nama'])) ?></td>
+                            </tr>
+                            <tr>
+                                <td class="field">JURUSAN</td>
+                                <td class="font-weight-bold"><?= ucwords(strtolower($data['jurusan']))  ?></td>
                             </tr>
                             <tr>
                                 <td class="field">Jenis Kelamin</td>
                                 </td>
-                                <td class="font-weight-bold"><?= $data['jenis_kelamin'] ?></td>
+                                <td class="font-weight-bold"><?php
+                                                                if ($data['jenis_kelamin'] == 'L') {
+                                                                    echo "Laki - Laki";
+                                                                } else {
+                                                                    echo "Perempuan";
+                                                                }
+                                                                ?></td>
                             </tr>
                             <tr>
                                 <td class="field">Tempat, Tanggal Lahir </td>
-                                <td class="font-weight-bold"><?= $data['tempat_lahir'] . ',' . $data['tanggal_lahir'] ?></td>
+                                <td class="font-weight-bold"><?= ucwords(strtolower($data['tempat_lahir'])) . ', ' . $data['tanggal_lahir'] ?></td>
                             </tr>
                             <tr>
                                 <td class="field">Alamat</td>
-                                <td class="font-weight-bold"><?= $data['alamat'] ?></td>
+                                <td class="font-weight-bold"><?= ucwords(strtolower($data['alamat'])) ?></td>
                             </tr>
                             <tr>
                                 <td class="field">Foto</td>
-                                <td><img src="img/<?= $data['foto'] ?>" alt="" height="200px" class="rounded"></td>
+                                <td>
+                                    <?php
+
+                                    if ($data['foto'] == null) {
+                                        echo "<img src='img/profile-dummy.png' alt='' height='200px' class='rounded'>";
+                                    } else {
+                                        echo "<img src='img/" . $data['foto'] . "' alt='' height='200px' class='rounded'>";
+                                    }
+                                    ?>
+
+                                </td>
                             </tr>
 
                         </table>
@@ -107,11 +128,24 @@ $data = read("SELECT * FROM siswas WHERE id = $id")[0];
                                 Ubah Kartu
                             </button>
                         </a>
-                        <a href="print.php" class="col-12  my-2">
-                            <button type="button" class="btn btn-success col-12 font-weight-bold py-2">
-                                Cetak Kartu
-                            </button>
-                        </a>
+
+                        <?php
+                        if ($data['foto'] == null) {
+                            echo "<a href='print.php' class='col-12  my-2'>
+                                <button type='button' disabled class='btn btn-success col-12 font-weight-bold py-2'>
+                                    Cetak Kartu
+                                </button>
+                            </a>";
+                        } else {
+                            echo "<a href='print.php' class='col-12  my-2'>
+                                    <button type='button' class='btn btn-success col-12 font-weight-bold py-2'>
+                                        Cetak Kartu
+                                    </button>
+                                </a>";
+                        }
+
+                        ?>
+
                     </div>
                 </div>
             </div>

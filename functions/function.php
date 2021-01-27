@@ -20,11 +20,11 @@ function updateCard($data)
     global $conn;
 
     $id = $data['id'];
-    $nama = $data['nama'];
-    $jenis_kelamin = $data['jenis-kelamin'];
-    $tempat_lahir = $data['tempat-lahir'];
+    $nama = htmlspecialchars(strtoupper($data['nama']));
+    $jenis_kelamin = htmlspecialchars($data['jenis-kelamin']);
+    $tempat_lahir = htmlspecialchars(strtoupper($data['tempat-lahir']));
     // $tanggal_lahir = $data['tanggal-lahir'];
-    $alamat = $data['alamat'];
+    $alamat = htmlspecialchars(strtoupper($data['alamat']));
     // $foto_lama = $data['foto-lama'];
 
     // if ($_FILES['foto']['error'] == 4) {
@@ -33,7 +33,7 @@ function updateCard($data)
     //     $foto = uploadImage();
     // }
 
-    $query = "UPDATE siswas SET nama = '$nama', jenis_kelamin = '$jenis_kelamin', tempat_lahir = '$tempat_lahir', alamat = '$alamat' WHERE id = $id";
+    $query = "UPDATE student SET nama = '$nama', jenis_kelamin = '$jenis_kelamin', tempat_lahir = '$tempat_lahir', alamat = '$alamat' WHERE id = $id";
 
     mysqli_query($conn, $query);
 
