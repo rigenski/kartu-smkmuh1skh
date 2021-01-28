@@ -26,7 +26,7 @@ $data = read("SELECT * FROM student WHERE id = $id")[0];
 $jenis_kelamin;
 
 if ($data['jenis_kelamin'] == 'L') {
-    $jenis_kelamin = "Laki - Laki";
+    $jenis_kelamin = "Laki-Laki";
 } else {
     $jenis_kelamin = "Perempuan";
 }
@@ -52,7 +52,7 @@ $pdf->SetXY(3.8, 2.36);
 $pdf->MultiCell(4, 0.2, 'Jl. Anggrek No.2, Denokan, Jetis, Kec. Sukoharjo, Kabupaten Sukoharjo, Jawa Tengah 57511', 0, 'C');
 $pdf->SetFont('Arial', 'B', 8);
 $pdf->SetXY(3.5, 3.5);
-$pdf->MultiCell(6.4, 0.4, strtoupper($data['nama']), 0, 'L');
+$pdf->MultiCell(6.8, 0.4, strtoupper($data['nama']), 0, 'L');
 $pdf->SetFont('Arial', '', 6.2);
 $pdf->SetXY(3.5, 3.85);
 $pdf->MultiCell(2, 0.3, 'NISN', 0, 'L');
@@ -113,7 +113,7 @@ $pdf->SetXY(10.8, 3.9);
 $pdf->MultiCell(2, 0.3, 'MISI', 0, 'L');
 $pdf->SetFont('Arial', '', 5.4);
 $pdf->SetXY(10.8, 4.25);
-$pdf->MultiCell(8, 0.2, '1.     Menumbuhkan karakter melalui pembiasaan nilai nilai islam.', 0, 'L');
+$pdf->MultiCell(8, 0.2, '1.     Menumbuhkan karakter melalui pembiasaan nilai-nilai islam.', 0, 'L');
 $pdf->SetXY(10.8, 4.46);
 $pdf->MultiCell(8, 0.2, '2.     Menguatkan pendidikan ketarunaan.', 0, 'L');
 $pdf->SetXY(10.8, 4.67);

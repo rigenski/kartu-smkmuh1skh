@@ -15,6 +15,7 @@ if (isset($_SESSION["login"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
   <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="shortcut icon" href="img/icon.ico">
   <style>
     * {
       color: #2D3748;

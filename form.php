@@ -31,6 +31,7 @@ if (isset($_POST['cetak'])) {
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/bootstrap-datepicker.min.css" />
   <link rel="stylesheet" href="css/croppie.css" />
+  <link rel="shortcut icon" href="img/icon.ico">
   <style>
     * {
       color: #2D3748;
@@ -102,14 +103,14 @@ if (isset($_POST['cetak'])) {
               <select class="custom-select" id="jenis-kelamin" name="jenis-kelamin" required>
                 <?php
                 if ($data['jenis_kelamin'] == "L") {
-                  echo "<option selected value='L'>Laki - Laki</option>
+                  echo "<option selected value='L'>Laki-Laki</option>
                   <option value='P'>Perempuan</option>";
                 } else if ($data['jenis_kelamin'] == "P") {
                   echo "<option selected value='P'>Perempuan</option>
-                  <option value='L'>Laki - Laki</option>";
+                  <option value='L'>Laki-Laki</option>";
                 } else {
                   echo "<option selected value=''>-- Pilih --</option>
-                  <option value='L'>Laki - Laki</option>
+                  <option value='L'>Laki-Laki</option>
                   <option value='P'>Perempuan</option>";
                 }
                 ?>

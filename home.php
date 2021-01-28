@@ -21,27 +21,28 @@ $data = read("SELECT * FROM student WHERE id = $id")[0];
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form Biodata Siswa</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="shortcut icon" href="img/icon.ico">
+    <style>
+        * {
+            color: #2D3748;
+            font-family: "Segoe UI";
+        }
+
+        body {
+            background-color: #E2E8F0;
+        }
+
+        #nav {
+            background-color: #2D3748;
+        }
+
+        #informasi {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05);
+            border-radius: .8rem;
+        }
+    </style>
 </head>
 
-<style>
-    * {
-        color: #2D3748;
-        font-family: "Segoe UI";
-    }
-
-    body {
-        background-color: #E2E8F0;
-    }
-
-    #nav {
-        background-color: #2D3748;
-    }
-
-    #informasi {
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05);
-        border-radius: .8rem;
-    }
-</style>
 
 <body>
     <nav id="nav" class="navbar navbar-expand-lg navbar-light py-2 shadow">
@@ -81,7 +82,7 @@ $data = read("SELECT * FROM student WHERE id = $id")[0];
                                 <td class="font-weight-bold"><?= ucwords(strtolower($data['nama'])) ?></td>
                             </tr>
                             <tr>
-                                <td class="field">JURUSAN</td>
+                                <td class="field">Jurusan</td>
                                 <td class="font-weight-bold"><?= ucwords(strtolower($data['jurusan']))  ?></td>
                             </tr>
                             <tr>
@@ -89,7 +90,7 @@ $data = read("SELECT * FROM student WHERE id = $id")[0];
                                 </td>
                                 <td class="font-weight-bold"><?php
                                                                 if ($data['jenis_kelamin'] == 'L') {
-                                                                    echo "Laki - Laki";
+                                                                    echo "Laki-Laki";
                                                                 } else {
                                                                     echo "Perempuan";
                                                                 }
@@ -131,11 +132,12 @@ $data = read("SELECT * FROM student WHERE id = $id")[0];
 
                         <?php
                         if ($data['foto'] == null) {
-                            echo "<a href='print.php' class='col-12  my-2'>
-                                <button type='button' disabled class='btn btn-success col-12 font-weight-bold py-2'>
+                            echo "<div class='col-12  my-2'>
+                                <button type='button' disabled class='btn btn-success col-12 font-weight-bold py-2 col-12  my-2'>
                                     Cetak Kartu
                                 </button>
-                            </a>";
+                                <small class='text-danger'>* pilih gambar terlebih dahulu !</small>
+                            </div>";
                         } else {
                             echo "<a href='print.php' class='col-12  my-2'>
                                     <button type='button' class='btn btn-success col-12 font-weight-bold py-2'>

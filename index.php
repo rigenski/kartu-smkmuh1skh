@@ -16,6 +16,8 @@ if (isset($_SESSION["login"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form Biodata Siswa</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/aos.css" />
+    <link rel="shortcut icon" href="img/icon.ico">
 </head>
 
 <style>
@@ -88,22 +90,25 @@ if (isset($_SESSION["login"])) {
             </div>
             <div class="row py-4">
                 <div class="col-12 col-md-6 col-lg-3 text-center">
-                    <img src="img/step1.png" class="img-fluid my-2 step" alt="">
+                    <img src="img/step1.png" class="img-fluid my-2 step" alt="" data-aos="fade-up">
+                </div>
+                <div class=" col-12 col-md-6 col-lg-3 text-center">
+                    <img src="img/step2.png" class="img-fluid my-2 step" alt="" data-aos="fade-up">
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 text-center">
-                    <img src="img/step2.png" class="img-fluid my-2 step" alt="">
+                    <img src="img/step3.png" class="img-fluid my-2 step" alt="" data-aos="fade-up">
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 text-center">
-                    <img src="img/step3.png" class="img-fluid my-2 step" alt="">
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 text-center">
-                    <img src="img/step4.png" class="img-fluid my-2 step" alt="">
+                    <img src="img/step4.png" class="img-fluid my-2 step" alt="" data-aos="fade-up">
                 </div>
             </div>
         </div>
     </div>
 
 
-
+    <script src="js/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 <html>
