@@ -22,7 +22,7 @@ if (isset($_POST["image"])) {
 
     $imageName = time() . '.png';
 
-    $query = "UPDATE student SET foto = '$imageName' WHERE id = $id";
+    $query = "UPDATE siswa SET foto = '$imageName' WHERE id = $id";
 
     mysqli_query($conn, $query);
 

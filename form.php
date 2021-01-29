@@ -8,7 +8,7 @@ if (!isset($_SESSION["login"])) {
 include 'functions/function.php';
 
 $id = $_SESSION['key'];
-$data = read("SELECT * FROM student WHERE id = $id")[0];
+$data = read("SELECT * FROM siswa WHERE id = $id")[0];
 
 if (isset($_POST['cetak'])) {
   if (updateCard($_POST) > 0) {
@@ -90,7 +90,7 @@ if (isset($_POST['cetak'])) {
         <form action="" method="post" class="m-0" enctype="multipart/form-data">
           <input type="hidden" name="id" value="<?= $_SESSION['key'] ?>">
           <!-- <input type="hidden" name="foto-lama" value="<?= $data['foto'] ?>"> -->
-          <h4 class="my-2">NIS: <?= $data['nis'] ?></h4>
+          <h4 class="my-2">NISN: <?= $data['nisn'] ?></h4>
           <div class="form-row">
             <div class="form-group col-md-8">
               <label for="nama">Nama Lengkap</label>
@@ -127,9 +127,9 @@ if (isset($_POST['cetak'])) {
             </div>
             <div class="form-group col-md-4">
               <label for="tanggal-lahir">Tanggal Lahir</label>
-              <input type="text" class="form-control datepicker" id="tanggal-lahir" disabled name="tanggal-lahir" value="<?php if ($data['tanggal_lahir'] !== null) {
-                                                                                                                            echo ucwords(strtolower($data['tanggal_lahir']));
-                                                                                                                          } ?>" />
+              <input type="text" class="form-control" id="tanggal-lahir" disabled name="tanggal-lahir" value="<?php if ($data['tanggal_lahir'] !== null) {
+                                                                                                                echo ucwords(strtolower($data['tanggal_lahir']));
+                                                                                                              } ?>" />
               <!-- <small>contoh : 15/05/2004</small> -->
             </div>
           </div>
@@ -138,7 +138,7 @@ if (isset($_POST['cetak'])) {
             <input type="text" class="form-control" id="alamat" name="alamat" value="<?php if ($data['alamat'] !== null) {
                                                                                         echo ucwords(strtolower($data['alamat']));
                                                                                       } ?>" />
-            <small>contoh : -</small>
+            <small>contoh : Purworejo 02/03, Lorog, Tawangsari</small>
           </div>
           <div class="row">
             <div class="form-group col-md-8">

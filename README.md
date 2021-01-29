@@ -1,7 +1,9 @@
 # Student Card
-web to print student cards
+
+web to print siswa cards
 
 ### Tech used
+
 - Bootstrap
 - Jquery
 - Croppie

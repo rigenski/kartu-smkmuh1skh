@@ -42,14 +42,14 @@ if (isset($_SESSION["login"])) {
             <div class="p-2">
               <div class="header-login text-center py-2">
                 <img src="img/logo-dark.svg" class="mb-2" alt="" width="200px">
-                <h5>Let's start print your student card!</h5>
+                <h5>Let's start print your siswa card!</h5>
               </div>
               <div class="content-login py-2">
                 <!-- FORM LOGIN -->
                 <form action="" method="post">
                   <div class="form-group">
-                    <label for="nis" class="mb-0">NIS</label>
-                    <input type="text" class="form-control" id="nis" name="nis" autofocus style="
+                    <label for="nisn" class="mb-0">NISN</label>
+                    <input type="text" class="form-control" id="nisn" name="nisn" autofocus style="
                           border: none;
                           border-bottom: 1px solid #2d3748;
                           border-radius: 0;
@@ -69,11 +69,11 @@ if (isset($_SESSION["login"])) {
                   </button>
                   <?php
                   if (isset($_POST["login"])) {
-                    $nis = $_POST["nis"];
+                    $nisn = $_POST["nisn"];
                     $password = $_POST["password"];
                     $err_login = "<div class = 'alert alert-success'role = 'alert' >Masukkan NIS dan password dengan Benar </div>";
 
-                    $result = mysqli_query($conn, "SELECT * FROM student WHERE nis = '$nis'");
+                    $result = mysqli_query($conn, "SELECT * FROM siswa WHERE nisn = '$nisn'");
 
                     //cek nis
                     if (mysqli_num_rows($result) === 1) {

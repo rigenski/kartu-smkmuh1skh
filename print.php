@@ -21,7 +21,7 @@ function read($query)
 }
 
 $id = $_SESSION['key'];
-$data = read("SELECT * FROM student WHERE id = $id")[0];
+$data = read("SELECT * FROM siswa WHERE id = $id")[0];
 
 $jenis_kelamin;
 

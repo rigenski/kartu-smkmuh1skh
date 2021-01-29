@@ -33,7 +33,7 @@ function updateCard($data)
     //     $foto = uploadImage();
     // }
 
-    $query = "UPDATE student SET nama = '$nama', jenis_kelamin = '$jenis_kelamin', tempat_lahir = '$tempat_lahir', alamat = '$alamat' WHERE id = $id";
+    $query = "UPDATE siswa SET nama = '$nama', jenis_kelamin = '$jenis_kelamin', tempat_lahir = '$tempat_lahir', alamat = '$alamat' WHERE id = $id";
 
     mysqli_query($conn, $query);
 

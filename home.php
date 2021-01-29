@@ -10,7 +10,7 @@ if (!isset($_SESSION["login"])) {
 include 'functions/function.php';
 
 $id = $_SESSION['key'];
-$data = read("SELECT * FROM student WHERE id = $id")[0];
+$data = read("SELECT * FROM siswa WHERE id = $id")[0];
 
 ?>
 <!DOCTYPE html>
@@ -74,8 +74,8 @@ $data = read("SELECT * FROM student WHERE id = $id")[0];
                         <h3 class="font-weight-bold mb-2 ml-2">Informasi</h3>
                         <table style="width: 100%;" cellspacing="0" cellpadding="10">
                             <tr>
-                                <td>NIS</td>
-                                <td class="font-weight-bold"><?= $data['nis'] ?></td>
+                                <td>NISN</td>
+                                <td class="font-weight-bold"><?= $data['nisn'] ?></td>
                             </tr>
                             <tr>
                                 <td class="field">Nama</td>
@@ -136,7 +136,7 @@ $data = read("SELECT * FROM student WHERE id = $id")[0];
                                 <button type='button' disabled class='btn btn-success col-12 font-weight-bold py-2 col-12  my-2'>
                                     Cetak Kartu
                                 </button>
-                                <small class='text-danger'>* pilih gambar terlebih dahulu !</small>
+                                <small class='text-danger'>* pilih foto terlebih dahulu !</small>
                             </div>";
                         } else {
                             echo "<a href='print.php' class='col-12  my-2'>
