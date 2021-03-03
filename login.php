@@ -49,19 +49,21 @@ if (isset($_SESSION["login"])) {
                 <form action="" method="post">
                   <div class="form-group">
                     <label for="nisn" class="mb-0">NISN</label>
-                    <input type="text" class="form-control" id="nisn" name="nisn" autofocus style="
+                    <input type="text" class="form-control mb-2" id="nisn" name="nisn" autofocus style="
                           border: none;
                           border-bottom: 1px solid #2d3748;
                           border-radius: 0;
                         " />
+                    <small>Contoh : 0071910597</small>
                   </div>
                   <div class="form-group">
                     <label for="password" class="mb-0">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" style="
+                    <input type="password" class="form-control mb-2" id="password" name="password" style="
                           border: none;
                           border-bottom: 1px solid #2d3748;
                           border-radius: 0;
                         " />
+                    <small>Contoh : 5/10/2020 (Bulan/Tanggal/Tahun)</small>
                   </div>
 
                   <button type="submit" class="btn btn-primary col-12 my-4 rounded-pill py-2" name="login">
@@ -69,7 +71,7 @@ if (isset($_SESSION["login"])) {
                   </button>
                   <?php
                   if (isset($_POST["login"])) {
-                    $nisn = $_POST["nisn"];
+                    $nisn = htmlspecialchars($_POST["nisn"], ENT_QUOTES);
                     $password = $_POST["password"];
                     $err_login = "<div class = 'alert alert-success'role = 'alert' >Masukkan NIS dan password dengan Benar </div>";
 

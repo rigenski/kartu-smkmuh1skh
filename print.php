@@ -23,6 +23,10 @@ function read($query)
 $id = $_SESSION['key'];
 $data = read("SELECT * FROM siswa WHERE id = $id")[0];
 
+if ($data['foto'] == "") {
+    header('Location: home.php');
+}
+
 $jenis_kelamin;
 
 if ($data['jenis_kelamin'] == 'L') {
@@ -31,6 +35,8 @@ if ($data['jenis_kelamin'] == 'L') {
     $jenis_kelamin = "Perempuan";
 }
 
+$tanggal_lahir = explode('/', $data['tanggal_lahir']);
+
 
 $pdf = new FPDF('P', 'cm', 'A4');
 $pdf->AddPage();
@@ -38,7 +44,7 @@ $pdf->Image('./img/card-03.png', 1.4, 1.4, 18);
 // FRONT PAGE
 $pdf->Image('./img/logo-smk.png', 1.8, 1.6, 0.8);
 $pdf->Image('./img/logo-dikdasmen.png', 8.72, 1.54, 1.6);
-$pdf->Image("./img/" . $data['foto'], 1.8, 3.5, 1.6);
+$pdf->Image("./img/profile/" . $data['foto'], 1.8, 3.5, 1.6);
 $pdf->Image("./img/tanda-tangan.png", 8.25, 5.75, 1);
 $pdf->Image("./img/cap.png", 7.1, 5.2, 1);
 $pdf->SetFont('Arial', 'B', 12);
@@ -51,42 +57,42 @@ $pdf->SetFont('Arial', '', 4.8);
 $pdf->SetXY(3.8, 2.36);
 $pdf->MultiCell(4, 0.2, 'Jl. Anggrek No.2, Denokan, Jetis, Kec. Sukoharjo, Kabupaten Sukoharjo, Jawa Tengah 57511', 0, 'C');
 $pdf->SetFont('Arial', 'B', 8);
-$pdf->SetXY(3.5, 3.5);
+$pdf->SetXY(3.5, 3.45);
 $pdf->MultiCell(6.8, 0.4, strtoupper($data['nama']), 0, 'L');
 $pdf->SetFont('Arial', '', 6.2);
-$pdf->SetXY(3.5, 3.85);
+$pdf->SetXY(3.5, 3.82);
 $pdf->MultiCell(2, 0.3, 'NISN', 0, 'L');
-$pdf->SetXY(5.2, 3.85);
+$pdf->SetXY(5.2, 3.82);
 $pdf->MultiCell(0.3, 0.3, ':', 0, 'L');
-$pdf->SetXY(5.4, 3.85);
+$pdf->SetXY(5.4, 3.82);
 $pdf->MultiCell(4.4, 0.3, $data['nisn'], 0, 'L');
-$pdf->SetXY(3.5, 4.12);
+$pdf->SetXY(3.5, 4.09);
 $pdf->MultiCell(2, 0.3, 'Jurusan', 0, 'L');
-$pdf->SetXY(5.2, 4.12);
+$pdf->SetXY(5.2, 4.09);
 $pdf->MultiCell(0.3, 0.3, ':', 0, 'L');
-$pdf->SetXY(5.4, 4.12);
+$pdf->SetXY(5.4, 4.09);
 $pdf->MultiCell(4.4, 0.3, ucwords(strtolower($data['jurusan'])), 0, 'L');
-$pdf->SetXY(3.5, 4.39);
+$pdf->SetXY(3.5, 4.36);
 $pdf->MultiCell(2, 0.3, 'Jenis Kelamin', 0, 'L');
-$pdf->SetXY(5.2, 4.39);
+$pdf->SetXY(5.2, 4.36);
 $pdf->MultiCell(0.3, 0.3, ':', 0, 'L');
-$pdf->SetXY(5.4, 4.39);
+$pdf->SetXY(5.4, 4.36);
 $pdf->MultiCell(4.4, 0.3, $jenis_kelamin, 0, 'L');
-$pdf->SetXY(3.5, 4.65);
+$pdf->SetXY(3.5, 4.62);
 $pdf->MultiCell(2, 0.3, 'TTL', 0, 'L');
-$pdf->SetXY(5.2, 4.65);
+$pdf->SetXY(5.2, 4.62);
 $pdf->MultiCell(0.3, 0.3, ':', 0, 'L');
-$pdf->SetXY(5.4, 4.65);
-$pdf->MultiCell(4.4, 0.3, ucwords(strtolower($data['tempat_lahir'])) . ', ' . $data['tanggal_lahir'], 0, 'L');
-$pdf->SetXY(3.5, 4.92);
+$pdf->SetXY(5.4, 4.62);
+$pdf->MultiCell(4.4, 0.3, ucwords(strtolower($data['tempat_lahir'])) . ', ' . $tanggal_lahir[1] . '-' . $tanggal_lahir[0] . '-' . $tanggal_lahir[2], 0, 'L');
+$pdf->SetXY(3.5, 4.89);
 $pdf->MultiCell(2, 0.3, 'Alamat', 0, 'L');
-$pdf->SetXY(5.2, 4.92);
+$pdf->SetXY(5.2, 4.89);
 $pdf->MultiCell(0.3, 0.3, ':', 0, 'L');
-$pdf->SetXY(5.4, 4.92);
-$pdf->MultiCell(4.4, 0.3, ucwords(strtolower($data['alamat'])), 0, 'L');
+$pdf->SetXY(5.4, 4.89);
+$pdf->MultiCell(4.4, 0.26, ucwords(strtolower($data['alamat'])), 0, 'L');
 $pdf->SetFont('Arial', '', 4.8);
 $pdf->SetXY(7.5, 5.4);
-$pdf->MultiCell(2.5, 0.2, 'Sukoharjo, 22 Januari 2021', 0, 'C');
+$pdf->MultiCell(2.5, 0.2, 'Sukoharjo, 04 Januari 2021', 0, 'C');
 $pdf->SetXY(7.5, 5.6);
 $pdf->MultiCell(2.5, 0.2, 'Kepala Sekolah', 0, 'C');
 $pdf->SetFont('Arial', 'B', 4.8);

@@ -11,7 +11,7 @@ include 'functions/function.php';
 
 $id = $_SESSION['key'];
 $data = read("SELECT * FROM siswa WHERE id = $id")[0];
-
+$tanggal_lahir = explode('/', $data['tanggal_lahir']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,7 +98,7 @@ $data = read("SELECT * FROM siswa WHERE id = $id")[0];
                             </tr>
                             <tr>
                                 <td class="field">Tempat, Tanggal Lahir </td>
-                                <td class="font-weight-bold"><?= ucwords(strtolower($data['tempat_lahir'])) . ', ' . $data['tanggal_lahir'] ?></td>
+                                <td class="font-weight-bold"><?= ucwords(strtolower($data['tempat_lahir'])) . ', ' . $tanggal_lahir[1] . '-' . $tanggal_lahir[0] . '-' . $tanggal_lahir[2] ?></td>
                             </tr>
                             <tr>
                                 <td class="field">Alamat</td>
@@ -112,7 +112,7 @@ $data = read("SELECT * FROM siswa WHERE id = $id")[0];
                                     if ($data['foto'] == null) {
                                         echo "<img src='img/profile-dummy.png' alt='' height='200px' class='rounded'>";
                                     } else {
-                                        echo "<img src='img/" . $data['foto'] . "' alt='' height='200px' class='rounded'>";
+                                        echo "<img src='img/profile/" . $data['foto'] . "' alt='' height='200px' class='rounded'>";
                                     }
                                     ?>
 
@@ -124,13 +124,27 @@ $data = read("SELECT * FROM siswa WHERE id = $id")[0];
                 </div>
                 <div class="col-md-4">
                     <div class="row">
-                        <a href="form.php" class="col-12 my-2">
-                            <button type="button" class="btn btn-primary col-12 font-weight-bold py-2">
+                        <a href='form.php' class='col-12 my-2'>
+                            <button type='button' class='btn btn-primary col-12 font-weight-bold py-2'>
                                 Ubah Kartu
                             </button>
                         </a>
-
                         <?php
+
+                        // if ($data['foto'] == null) {
+                        //     echo "<a href='form.php' class='col-12 my-2'>
+                        //     <button type='button' class='btn btn-primary col-12 font-weight-bold py-2'>
+                        //         Ubah Kartu
+                        //     </button>
+                        // </a>";
+                        // } else {
+                        //     echo "<a href='form.php' class='col-12 my-2'>
+                        //     <button type='button' disabled class='btn btn-primary col-12 font-weight-bold py-2'>
+                        //         Ubah Kartu
+                        //     </button>
+                        // </a>";
+                        // }
+
                         if ($data['foto'] == null) {
                             echo "<div class='col-12  my-2'>
                                 <button type='button' disabled class='btn btn-success col-12 font-weight-bold py-2 col-12  my-2'>

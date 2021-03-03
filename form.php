@@ -9,6 +9,12 @@ include 'functions/function.php';
 
 $id = $_SESSION['key'];
 $data = read("SELECT * FROM siswa WHERE id = $id")[0];
+$tanggal_lahir = explode('/', $data['tanggal_lahir']);
+
+// if ($data['foto'] !== "") {
+//   header('Location: home.php');
+// }
+
 
 if (isset($_POST['cetak'])) {
   if (updateCard($_POST) > 0) {
@@ -128,7 +134,7 @@ if (isset($_POST['cetak'])) {
             <div class="form-group col-md-4">
               <label for="tanggal-lahir">Tanggal Lahir</label>
               <input type="text" class="form-control" id="tanggal-lahir" disabled name="tanggal-lahir" value="<?php if ($data['tanggal_lahir'] !== null) {
-                                                                                                                echo ucwords(strtolower($data['tanggal_lahir']));
+                                                                                                                echo ucwords(strtolower($tanggal_lahir[1] . '-' . $tanggal_lahir[0] . '-' . $tanggal_lahir[2]));
                                                                                                               } ?>" />
               <!-- <small>contoh : 15/05/2004</small> -->
             </div>
@@ -138,20 +144,31 @@ if (isset($_POST['cetak'])) {
             <input type="text" class="form-control" id="alamat" name="alamat" value="<?php if ($data['alamat'] !== null) {
                                                                                         echo ucwords(strtolower($data['alamat']));
                                                                                       } ?>" />
-            <small>contoh : Purworejo 02/03, Lorog, Tawangsari</small>
+            <small>contoh : Purworejo 02/03, Lorog, Tawangsari, Sukoharjo, Jawa Tengah</small>
           </div>
-          <div class="row">
-            <div class="form-group col-md-8">
-              <label for="">Foto</label>
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" accept="image/x-png,image/jpg,image/jpeg" id="foto" name="foto" />
-                <label class="custom-file-label" for="foto">-- Pilih Foto --</label>
+          <?php
+
+          if ($data['foto'] == null) {
+            echo "<div class='row'>
+            <div class='form-group col-md-8'>
+              <label for=''>Foto</label>
+              <div class='col-12 px-0 mt-2'>
+                <div class='alert alert-danger ' role='alert'>
+                  <b class='text-danger'>WARNING!!!</b> Upload Foto hanya bisa dilakukan <b class='text-danger'>1x</b> , Silahkan gunakan Foto Formal seperti contoh di bawah. Jika sudah upload foto, maka <b class='text-danger'>tidak bisa dirubah kembali</b>.
+                </div>
+              </div>
+              <div class='custom-file'>
+                <input type='file' class='custom-file-input' accept='image/x-png,image/jpg,image/jpeg' id='foto' name='foto' />
+                <label class='custom-file-label' for='foto'>-- Pilih Foto --</label>
                 <small>max. 6 MB</small>
               </div>
             </div>
-            <div class="col-md-4 text-center" id="uploaded_image">
+            <div class='col-md-4 text-center' id='uploaded_image'>
+              <img src='img/sample-photo.jpg' class='img-thumbnail mt-4 ' />
             </div>
-          </div>
+          </div>";
+          }
+          ?>
           <button type="submit" class="btn btn-primary col-12 my-4" name="cetak">
             Simpan Kartu
           </button>
@@ -248,7 +265,7 @@ if (isset($_POST['cetak'])) {
           size: 'viewport'
         }).then(function(response) {
           $.ajax({
-            url: "img/upload.php",
+            url: "img/profile/upload.php",
             type: "POST",
             data: {
               "image": response,

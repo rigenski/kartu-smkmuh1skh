@@ -5,7 +5,7 @@ if (!isset($_SESSION["login"])) {
     header("Location: login.php");
 }
 
-include '../functions/connection.php';
+include '../../functions/connection.php';
 
 //upload.php
 
@@ -28,5 +28,5 @@ if (isset($_POST["image"])) {
 
     file_put_contents($imageName, $data);
 
-    echo '<img src="img/' . $imageName . '" class="img-thumbnail mt-4 mx-4" />';
+    echo '<img src="img/profile/' . $imageName . '" class="img-thumbnail mt-4" />';
 }

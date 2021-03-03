@@ -20,11 +20,11 @@ function updateCard($data)
     global $conn;
 
     $id = $data['id'];
-    $nama = htmlspecialchars(strtoupper($data['nama']));
-    $jenis_kelamin = htmlspecialchars($data['jenis-kelamin']);
-    $tempat_lahir = htmlspecialchars(strtoupper($data['tempat-lahir']));
+    $nama = htmlspecialchars(strtoupper(str_replace("'", "", $data['nama'])));
+    $jenis_kelamin = htmlspecialchars(str_replace("'", "", $data['jenis-kelamin']));
+    $tempat_lahir = htmlspecialchars(str_replace("'", "", strtoupper($data['tempat-lahir'])));
     // $tanggal_lahir = $data['tanggal-lahir'];
-    $alamat = htmlspecialchars(strtoupper($data['alamat']));
+    $alamat = htmlspecialchars(str_replace("'", "", strtoupper($data['alamat'])));
     // $foto_lama = $data['foto-lama'];
 
     // if ($_FILES['foto']['error'] == 4) {
