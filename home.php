@@ -11,7 +11,7 @@ include 'functions/function.php';
 
 $id = $_SESSION['key'];
 $data = read("SELECT * FROM siswa WHERE id = $id")[0];
-$tanggal_lahir = explode('/', $data['tanggal_lahir']);
+$tanggal_lahir = explode('-', $data['tanggal_lahir']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,7 +98,7 @@ $tanggal_lahir = explode('/', $data['tanggal_lahir']);
                             </tr>
                             <tr>
                                 <td class="field">Tempat, Tanggal Lahir </td>
-                                <td class="font-weight-bold"><?= ucwords(strtolower($data['tempat_lahir'])) . ', ' . $tanggal_lahir[1] . '-' . $tanggal_lahir[0] . '-' . $tanggal_lahir[2] ?></td>
+                                <td class="font-weight-bold"><?= ucwords(strtolower($data['tempat_lahir'])) . ', ' . $tanggal_lahir[2] . '-' . $tanggal_lahir[1] . '-' . $tanggal_lahir[0]  ?></td>
                             </tr>
                             <tr>
                                 <td class="field">Alamat</td>

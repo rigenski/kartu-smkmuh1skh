@@ -48,13 +48,13 @@ if (isset($_SESSION["login"])) {
                 <!-- FORM LOGIN -->
                 <form action="" method="post">
                   <div class="form-group">
-                    <label for="nisn" class="mb-0">NISN</label>
-                    <input type="text" class="form-control mb-2" id="nisn" name="nisn" autofocus style="
+                    <label for="nis" class="mb-0">NIS</label>
+                    <input type="text" class="form-control mb-2" id="nis" name="nis" autofocus style="
                           border: none;
                           border-bottom: 1px solid #2d3748;
                           border-radius: 0;
                         " />
-                    <small>Contoh : 0071910597</small>
+                    <small>Contoh : 11134</small>
                   </div>
                   <div class="form-group">
                     <label for="password" class="mb-0">Password</label>
@@ -63,7 +63,7 @@ if (isset($_SESSION["login"])) {
                           border-bottom: 1px solid #2d3748;
                           border-radius: 0;
                         " />
-                    <small>Contoh : 5/10/2020 (Bulan/Tanggal/Tahun)</small>
+                    <!-- <small>Contoh : 5/10/2020 (Bulan/Tanggal/Tahun)</small> -->
                   </div>
 
                   <button type="submit" class="btn btn-primary col-12 my-4 rounded-pill py-2" name="login">
@@ -71,17 +71,17 @@ if (isset($_SESSION["login"])) {
                   </button>
                   <?php
                   if (isset($_POST["login"])) {
-                    $nisn = htmlspecialchars($_POST["nisn"], ENT_QUOTES);
+                    $nis = htmlspecialchars($_POST["nis"], ENT_QUOTES);
                     $password = $_POST["password"];
                     $err_login = "<div class = 'alert alert-success'role = 'alert' >Masukkan NIS dan password dengan Benar </div>";
 
-                    $result = mysqli_query($conn, "SELECT * FROM siswa WHERE nisn = '$nisn'");
+                    $result = mysqli_query($conn, "SELECT * FROM siswa WHERE nis = '$nis'");
 
                     //cek nis
                     if (mysqli_num_rows($result) === 1) {
                       // cek password
                       $row = mysqli_fetch_assoc($result);
-                      if ($password == $row['tanggal_lahir']) {
+                      if ($password == 'mutuharjo') {
 
                         // set session
                         $_SESSION["login"] = true;

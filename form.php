@@ -105,6 +105,21 @@ if (isset($_POST['cetak'])) {
                                                                                     } ?>" />
             </div>
             <div class="form-group col-md-4">
+              <label for="nisn">NISN</label>
+              <input type="text" class="form-control" id="nisn" name="nisn" value="<?php if ($data['nisn'] !== null) {
+                                                                                      echo ucwords(strtolower($data['nisn']));
+                                                                                    } ?>" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <label for="tempat-lahir">Tempat Lahir</label>
+              <input type="text" class="form-control" id="tempat-lahir" name="tempat-lahir" value="<?php if ($data['tempat_lahir'] !== null) {
+                                                                                                      echo ucwords(strtolower($data['tempat_lahir']));
+                                                                                                    } ?>" />
+              <small>contoh : Sukoharjo</small>
+            </div>
+            <div class="form-group col-md-4">
               <label for="jenis-kelamin">Jenis Kelamin</label>
               <select class="custom-select" id="jenis-kelamin" name="jenis-kelamin" required>
                 <?php
@@ -125,26 +140,19 @@ if (isset($_POST['cetak'])) {
           </div>
           <div class="form-row">
             <div class="form-group col-md-8">
-              <label for="tempat-lahir">Tempat Lahir</label>
-              <input type="text" class="form-control" id="tempat-lahir" name="tempat-lahir" value="<?php if ($data['tempat_lahir'] !== null) {
-                                                                                                      echo ucwords(strtolower($data['tempat_lahir']));
-                                                                                                    } ?>" />
-              <small>contoh : Sukoharjo</small>
+              <label for="alamat">Alamat</label>
+              <input type="text" class="form-control" id="alamat" name="alamat" value="<?php if ($data['alamat'] !== null) {
+                                                                                          echo ucwords(strtolower($data['alamat']));
+                                                                                        } ?>" />
+              <small>contoh : Purworejo 02/03, Lorog, Tawangsari, Sukoharjo, Jawa Tengah</small>
             </div>
             <div class="form-group col-md-4">
               <label for="tanggal-lahir">Tanggal Lahir</label>
-              <input type="text" class="form-control" id="tanggal-lahir" disabled name="tanggal-lahir" value="<?php if ($data['tanggal_lahir'] !== null) {
-                                                                                                                echo ucwords(strtolower($tanggal_lahir[1] . '-' . $tanggal_lahir[0] . '-' . $tanggal_lahir[2]));
-                                                                                                              } ?>" />
-              <!-- <small>contoh : 15/05/2004</small> -->
+              <input type="date" class="form-control" id="tanggal-lahir" name="tanggal-lahir" value="<?php if ($data['tanggal_lahir'] !== null) {
+                                                                                                        echo $data['tanggal_lahir'];
+                                                                                                      } ?>" />
+              <small>contoh : 05/15/2004 (Bulan/Tanggal/Tahun)</small>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="alamat">Alamat</label>
-            <input type="text" class="form-control" id="alamat" name="alamat" value="<?php if ($data['alamat'] !== null) {
-                                                                                        echo ucwords(strtolower($data['alamat']));
-                                                                                      } ?>" />
-            <small>contoh : Purworejo 02/03, Lorog, Tawangsari, Sukoharjo, Jawa Tengah</small>
           </div>
           <?php
 

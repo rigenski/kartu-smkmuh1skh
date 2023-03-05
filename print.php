@@ -6,7 +6,7 @@ if (!isset($_SESSION["login"])) {
 }
 
 require('lib/fpdf.php');
-$conn = mysqli_connect("localhost", "root", "", "print_card");
+$conn = mysqli_connect("localhost", "root", "", "kartumu");
 
 function read($query)
 {
@@ -35,7 +35,7 @@ if ($data['jenis_kelamin'] == 'L') {
     $jenis_kelamin = "Perempuan";
 }
 
-$tanggal_lahir = explode('/', $data['tanggal_lahir']);
+$tanggal_lahir = explode('-', $data['tanggal_lahir']);
 
 
 $pdf = new FPDF('P', 'cm', 'A4');
@@ -83,7 +83,7 @@ $pdf->MultiCell(2, 0.3, 'TTL', 0, 'L');
 $pdf->SetXY(5.2, 4.62);
 $pdf->MultiCell(0.3, 0.3, ':', 0, 'L');
 $pdf->SetXY(5.4, 4.62);
-$pdf->MultiCell(4.4, 0.3, ucwords(strtolower($data['tempat_lahir'])) . ', ' . $tanggal_lahir[1] . '-' . $tanggal_lahir[0] . '-' . $tanggal_lahir[2], 0, 'L');
+$pdf->MultiCell(4.4, 0.3, ucwords(strtolower($data['tempat_lahir'])) . ', ' . $tanggal_lahir[2] . '-' . $tanggal_lahir[1] . '-' . $tanggal_lahir[0], 0, 'L');
 $pdf->SetXY(3.5, 4.89);
 $pdf->MultiCell(2, 0.3, 'Alamat', 0, 'L');
 $pdf->SetXY(5.2, 4.89);

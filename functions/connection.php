@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "print_card");
+$conn = mysqli_connect("localhost", "root", "", "kartumu");
 
 if ($conn) {
     echo "<script>console.log('connected succesfully')</script>";
